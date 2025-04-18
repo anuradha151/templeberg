@@ -2,6 +2,7 @@ package com.templeberg.reviewmgtservice.controller;
 
 import com.templeberg.reviewmgtservice.dto.ReviewDto;
 import com.templeberg.reviewmgtservice.enums.CommonStatus;
+import com.templeberg.reviewmgtservice.service.ApplicationStateService;
 import com.templeberg.reviewmgtservice.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,9 +16,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ReviewController {
 
     private final ReviewService reviewService;
+    private final ApplicationStateService applicationStateService;
 
     @GetMapping("/")
     public String index(Model model) {
+        if (applicationStateService.getLoggedUser() == null) {
+            return "redirect:/login";
+        }
         model.addAttribute("reviews", reviewService.findAll());
         return "index";
     }

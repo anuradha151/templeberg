@@ -4,6 +4,7 @@ import com.templeberg.reviewmgtservice.dto.UserDto;
 import com.templeberg.reviewmgtservice.model.User;
 import com.templeberg.reviewmgtservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public void save(UserDto dto) {
         validateSaveRequest(dto);
@@ -28,6 +30,7 @@ public class UserService {
                 new User(
                         dto.getUsername(),
                         dto.getEmail(),
+                        passwordEncoder.encode(dto.getPassword()),
                         dto.getRole()
                 )
         );
