@@ -28,7 +28,8 @@ public class ReviewService {
                                             dto.getTitle(),
                                             dto.getDescription(),
                                             dto.getAuthor(),
-                                            dto.getStars()
+                                            dto.getStars(),
+                                            dto.getStatus()
                                     )
                             );
                         }
@@ -50,7 +51,8 @@ public class ReviewService {
                 review.getTitle(),
                 review.getDescription(),
                 review.getAuthor(),
-                review.getStars()
+                review.getStars(),
+                review.getStatus()
         );
     }
 

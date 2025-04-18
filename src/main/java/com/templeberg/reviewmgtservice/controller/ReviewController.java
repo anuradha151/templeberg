@@ -1,6 +1,7 @@
 package com.templeberg.reviewmgtservice.controller;
 
 import com.templeberg.reviewmgtservice.dto.ReviewDto;
+import com.templeberg.reviewmgtservice.enums.CommonStatus;
 import com.templeberg.reviewmgtservice.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class ReviewController {
                                @RequestParam String author,
                                @RequestParam int stars) {
 
-        ReviewDto dto = new ReviewDto(title, description, author, stars);
+        ReviewDto dto = new ReviewDto(title, description, author, stars, CommonStatus.PREVIEW);
         reviewService.save(dto);
 
         return "redirect:/";

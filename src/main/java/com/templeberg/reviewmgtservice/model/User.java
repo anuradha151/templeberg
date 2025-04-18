@@ -1,6 +1,6 @@
 package com.templeberg.reviewmgtservice.model;
 
-import com.templeberg.reviewmgtservice.enums.CommonStatus;
+import com.templeberg.reviewmgtservice.enums.UserRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -18,15 +18,13 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Review {
+public class User {
     @Id
     @UuidGenerator
     private String id;
-    private String title;
-    private String description;
-    private String author;
-    private int stars;
-    private CommonStatus status;
+    private String username;
+    private String email;
+    private UserRole role;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
@@ -35,15 +33,16 @@ public class Review {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
+    public User() {}
 
-    public Review() {}
-
-    public Review(String title, String description, String author, int stars, CommonStatus status) {
-        this.title = title;
-        this.description = description;
-        this.author = author;
-        this.stars = stars;
-        this.status = status;
+    public User(
+            String username,
+            String email,
+            UserRole role
+    ) {
+        this.username = username;
+        this.email = email;
+        this.role = role;
     }
 
 }
