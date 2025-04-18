@@ -7,20 +7,19 @@ import com.templeberg.reviewmgtservice.model.User;
 import com.templeberg.reviewmgtservice.repository.ReviewRepository;
 import com.templeberg.reviewmgtservice.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Configuration
 public class MetaDataConfig {
 
     private final ReviewRepository reviewRepository;
     private final UserRepository userRepository;
-
-    public MetaDataConfig(ReviewRepository reviewRepository, UserRepository userRepository) {
-        this.reviewRepository = reviewRepository;
-        this.userRepository = userRepository;
-    }
+    private final PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() {
@@ -32,17 +31,17 @@ public class MetaDataConfig {
         if (userRepository.count() > 0) return;
 
         List<User> users = List.of(
-                new User("naveen01", "naveen01@example.com", UserRole.USER),
-                new User("sachini02", "sachini02@example.com", UserRole.USER),
-                new User("manula03", "manula03@example.com", UserRole.USER),
-                new User("iraj04", "iraj04@example.com", UserRole.USER),
-                new User("dinali05", "dinali05@example.com", UserRole.USER),
+                new User("naveen01", "naveen01@example.com", passwordEncoder.encode("userpass1"), UserRole.USER),
+                new User("sachini02", "sachini02@example.com", passwordEncoder.encode("userpass2"), UserRole.USER),
+                new User("manula03", "manula03@example.com", passwordEncoder.encode("userpass3"), UserRole.USER),
+                new User("iraj04", "iraj04@example.com", passwordEncoder.encode("userpass4"), UserRole.USER),
+                new User("dinali05", "dinali05@example.com", passwordEncoder.encode("userpass5"), UserRole.USER),
 
-                new User("admin_suresh", "suresh.admin@example.com", UserRole.ADMIN),
-                new User("admin_kavya", "kavya.admin@example.com", UserRole.ADMIN),
-                new User("admin_mahesh", "mahesh.admin@example.com", UserRole.ADMIN),
-                new User("admin_nirmala", "nirmala.admin@example.com", UserRole.ADMIN),
-                new User("admin_bimal", "bimal.admin@example.com", UserRole.ADMIN)
+                new User("admin_suresh", "suresh.admin@example.com", passwordEncoder.encode("adminpass1"), UserRole.ADMIN),
+                new User("admin_kavya", "kavya.admin@example.com", passwordEncoder.encode("adminpass2"), UserRole.ADMIN),
+                new User("admin_mahesh", "mahesh.admin@example.com", passwordEncoder.encode("adminpass3"), UserRole.ADMIN),
+                new User("admin_nirmala", "nirmala.admin@example.com", passwordEncoder.encode("adminpass4"), UserRole.ADMIN),
+                new User("admin_bimal", "bimal.admin@example.com", passwordEncoder.encode("adminpass5"), UserRole.ADMIN)
         );
 
         userRepository.saveAll(users);
