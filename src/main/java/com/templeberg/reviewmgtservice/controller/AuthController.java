@@ -1,5 +1,6 @@
 package com.templeberg.reviewmgtservice.controller;
 
+import com.templeberg.reviewmgtservice.service.ApplicationStateService;
 import com.templeberg.reviewmgtservice.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
+    private final ApplicationStateService applicationStateService;
 
     @GetMapping("/login")
     public String showLoginPage() {
@@ -27,5 +29,11 @@ public class AuthController {
             model.addAttribute("error", "Invalid username or password");
             return "Login";
         }
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        authService.logout();
+        return "redirect:/login";
     }
 }

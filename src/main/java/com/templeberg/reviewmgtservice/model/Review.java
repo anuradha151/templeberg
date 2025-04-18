@@ -1,10 +1,7 @@
 package com.templeberg.reviewmgtservice.model;
 
 import com.templeberg.reviewmgtservice.enums.CommonStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
@@ -26,6 +23,7 @@ public class Review {
     private String description;
     private String author;
     private int stars;
+    @Enumerated(EnumType.STRING)
     private CommonStatus status;
 
     @CreatedDate

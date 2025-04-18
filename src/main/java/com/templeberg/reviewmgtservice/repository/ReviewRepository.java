@@ -1,5 +1,6 @@
 package com.templeberg.reviewmgtservice.repository;
 
+import com.templeberg.reviewmgtservice.enums.CommonStatus;
 import com.templeberg.reviewmgtservice.model.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -11,4 +12,6 @@ public interface ReviewRepository extends JpaRepository<Review, String> {
     Optional<Review> findByAuthor(String author);
 
     List<Review> findAllByOrderByUpdatedAtDesc();
+
+    List<Review> findAllByStatusOrderByUpdatedAtDesc(CommonStatus commonStatus);
 }

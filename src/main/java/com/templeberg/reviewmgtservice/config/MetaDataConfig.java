@@ -52,21 +52,21 @@ public class MetaDataConfig {
         if (reviewRepository.count() > 0) return;
 
         List<Review> reviews = List.of(
-                new Review("Breathtaking Views", "The sunrise from the balcony was unforgettable.", "Naduni", 5, CommonStatus.PREVIEW),
-                new Review("Relaxing Retreat", "Perfect getaway from the city. Peaceful and quiet.", "Tharindu", 4, CommonStatus.PREVIEW),
-                new Review("Very Clean & Cozy", "Spotless rooms and cozy interiors. Highly recommended!", "Ishara", 5, CommonStatus.PREVIEW),
-                new Review("Delicious Food", "The meals were authentic and super tasty!", "Kasun", 4, CommonStatus.PREVIEW),
-                new Review("Warm Hospitality", "Felt like home. Staff were always smiling.", "Amaya", 5, CommonStatus.PREVIEW),
-                new Review("Nice But Noisy", "Great place but a bit noisy during the day.", "Supun", 3, CommonStatus.PREVIEW),
-                new Review("Perfect for Families", "Kids loved the pool and garden area!", "Janani", 4, CommonStatus.PREVIEW),
-                new Review("Fast Service", "Quick check-in and prompt room service.", "Ravindu", 5, CommonStatus.PREVIEW),
-                new Review("Average Stay", "Was okay but expected more for the price.", "Chamari", 3, CommonStatus.PREVIEW),
-                new Review("Great Location", "Close to attractions. Easy to get around.", "Dineth", 4, CommonStatus.PREVIEW),
-                new Review("Internet Issues", "Wi-Fi was unreliable. Needs improvement.", "Harsha", 2, CommonStatus.PREVIEW),
-                new Review("Romantic Atmosphere", "Ideal for couples. Beautiful setting.", "Sanduni", 5, CommonStatus.PREVIEW),
-                new Review("Fantastic Pool", "The pool area was clean and relaxing.", "Nipun", 4, CommonStatus.PREVIEW),
-                new Review("Friendly Staff", "They really go the extra mile!", "Mevan", 5, CommonStatus.PREVIEW),
-                new Review("Could Improve Rooms", "Rooms need a refresh. A bit outdated.", "Dilsha", 3,  CommonStatus.PREVIEW)
+                new Review("Breathtaking Views", "The sunrise from the balcony was unforgettable.", "Naduni", 5, CommonStatus.DRAFT),
+                new Review("Relaxing Retreat", "Perfect getaway from the city. Peaceful and quiet.", "Tharindu", 4, CommonStatus.DRAFT),
+                new Review("Very Clean & Cozy", "Spotless rooms and cozy interiors. Highly recommended!", "Ishara", 5, CommonStatus.DRAFT),
+                new Review("Delicious Food", "The meals were authentic and super tasty!", "Kasun", 4, CommonStatus.DRAFT),
+                new Review("Warm Hospitality", "Felt like home. Staff were always smiling.", "Amaya", 5, CommonStatus.PUBLISHED),
+                new Review("Nice But Noisy", "Great place but a bit noisy during the day.", "Supun", 3, CommonStatus.PUBLISHED),
+                new Review("Perfect for Families", "Kids loved the pool and garden area!", "Janani", 4, CommonStatus.PUBLISHED),
+                new Review("Fast Service", "Quick check-in and prompt room service.", "Ravindu", 5, CommonStatus.PUBLISHED),
+                new Review("Average Stay", "Was okay but expected more for the price.", "Chamari", 3, CommonStatus.PUBLISHED),
+                new Review("Great Location", "Close to attractions. Easy to get around.", "Dineth", 4, CommonStatus.DRAFT),
+                new Review("Internet Issues", "Wi-Fi was unreliable. Needs improvement.", "Harsha", 2, CommonStatus.DRAFT),
+                new Review("Romantic Atmosphere", "Ideal for couples. Beautiful setting.", "Sanduni", 5, CommonStatus.PUBLISHED),
+                new Review("Fantastic Pool", "The pool area was clean and relaxing.", "Nipun", 4, CommonStatus.PUBLISHED),
+                new Review("Friendly Staff", "They really go the extra mile!", "Mevan", 5, CommonStatus.DRAFT),
+                new Review("Could Improve Rooms", "Rooms need a refresh. A bit outdated.", "Dilsha", 3,  CommonStatus.DRAFT)
         );
 
         reviewRepository.saveAll(reviews);

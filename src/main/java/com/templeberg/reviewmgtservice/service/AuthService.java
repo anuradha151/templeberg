@@ -23,4 +23,8 @@ public class AuthService {
                 })
                 .orElse(false);
     }
+
+    public void logout() {
+        applicationStateService.setLoggedUser(null);
+    }
 }
